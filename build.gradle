@@ -19,8 +19,40 @@ repositories {
 
 dependencies {
 
+	// Spring Boot Core
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	
+	// Database
+	implementation 'org.postgresql:postgresql:42.7.1'
+	implementation 'org.flywaydb:flyway-core:9.22.3'
+	
+	// Lombok
+	implementation 'org.projectlombok:lombok:1.18.42'
+	annotationProcessor 'org.projectlombok:lombok:1.18.42'
+
+	// JWT (JJWT)
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	
+	// Swagger/OpenAPI
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+	
+	// Payment Gateway (Razorpay)
+	implementation 'com.razorpay:razorpay-java:1.4.5'
+	
+	// JSON Processing
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0'
+	
+	// Logging
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+	// Testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
