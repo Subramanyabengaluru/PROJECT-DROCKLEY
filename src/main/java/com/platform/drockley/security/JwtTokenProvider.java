@@ -3,12 +3,12 @@ package com.platform.drockley.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -19,8 +19,8 @@ public class JwtTokenProvider {
 
     private final Key key;
 
-    public JwtTokenProvider(@Value("${security.jwt.secret:changeit123456789012345678901234}") String secret) {
-        byte[] keyBytes = Decoders.BASE64.decode(secret);
+    public JwtTokenProvider(@Value("${jwt.secret:${security.jwt.secret:changeit-12345678901234567890123456789012}}") String secret) {
+        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 

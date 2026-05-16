@@ -127,7 +127,7 @@ public class PaymentServiceImpl implements PaymentService {
                     secret.getBytes("UTF-8"), "HmacSHA256");
             mac.init(secretKey);
             byte[] hash = mac.doFinal(payload.getBytes("UTF-8"));
-            return javax.xml.bind.DatatypeConverter.printHexBinary(hash).toLowerCase();
+            return java.util.HexFormat.of().formatHex(hash);
         } catch (Exception e) {
             log.error("Error generating signature", e);
             return "";
